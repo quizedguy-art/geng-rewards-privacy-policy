@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geng Rewards - Earn Money by Watching Ads</title>
-    <meta name="description" content="Geng Rewards is the easiest way to earn money and gift card rewards by watching ads. Boost your earnings with premium plans.">
+    <title>GenGrewards — #1 Scroll to Earn App | Turn Screen Time Into Real Cash</title>
+    <meta name="description" content="GenGrewards is the premier Scroll to Earn platform. Get paid daily for your phone usage, screen-time habits, and referring friends. Instant cashouts via UPI & Gift Cards.">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #6C63FF;
-            --primary-dark: #5a52d4;
-            --secondary: #2D3436;
-            --accent: #00CEC9;
-            --text: #2D3436;
-            --text-light: #636E72;
-            --bg: #FFFFFF;
-            --bg-alt: #F9F9FF;
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.4);
+            --bg-dark: #0b0f19;
+            --surface-dark: #151c2c;
+            --surface-card: rgba(21, 28, 44, 0.75);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-border-hover: rgba(99, 102, 241, 0.4);
         }
 
         * {
@@ -28,229 +33,551 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             line-height: 1.6;
-            color: var(--text);
-            background-color: var(--bg);
+            overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* Ambient Glow Background Effects */
+        .ambient-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            pointer-events: none;
+            z-index: 0;
         }
 
-        /* Header */
+        .glow-1 {
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.28) 0%, rgba(139, 92, 246, 0.12) 60%, transparent 80%);
+        }
+
+        .glow-2 {
+            top: 1200px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, transparent 70%);
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glassmorphic Navbar */
         header {
-            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 18px 0;
+        }
+
+        .nav-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 14px;
+            text-decoration: none;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
         }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            border-radius: 12px;
+        .logo-badge {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 20px;
+            font-size: 22px;
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 36px;
         }
 
         nav a {
+            color: var(--text-muted);
             text-decoration: none;
-            color: var(--text);
-            margin-left: 30px;
-            font-weight: 500;
-            transition: color 0.3s;
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.2s;
         }
 
         nav a:hover {
-            color: var(--primary);
+            color: white;
+        }
+
+        .btn-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 4px 18px rgba(99, 102, 241, 0.35);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
         }
 
         /* Hero Section */
         .hero {
-            padding: 100px 0;
-            display: flex;
+            padding: 190px 0 110px;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
             align-items: center;
-            justify-content: space-between;
-            gap: 50px;
         }
 
-        .hero-content {
-            flex: 1;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #34d399;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 28px;
         }
 
-        .hero-content h1 {
-            font-size: 56px;
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 60px;
+            font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #34d399 0%, #818cf8 50%, #c084fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-content p {
-            font-size: 20px;
-            color: var(--text-light);
+        .hero-subtitle {
+            font-size: 19px;
+            color: var(--text-muted);
             margin-bottom: 40px;
-            max-width: 500px;
+            max-width: 540px;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 18px 36px;
-            background: var(--primary);
+        .hero-actions {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, var(--accent), #059669);
             color: white;
+            padding: 18px 38px;
+            border-radius: 18px;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 18px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+            font-weight: 800;
+            font-size: 17px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.45);
+            transition: all 0.25s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .cta-button:hover {
+        .btn-main:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.4);
+            box-shadow: 0 16px 36px rgba(16, 185, 129, 0.6);
         }
 
-        .hero-image {
-            flex: 1;
-            text-align: right;
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 18px 34px;
+            border-radius: 18px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.2s;
+            backdrop-filter: blur(10px);
         }
 
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
-        /* Features */
-        .features {
-            padding: 100px 0;
-            background: var(--bg-alt);
+        /* Hero Image Container */
+        .hero-image-wrapper {
+            position: relative;
         }
 
-        .section-title {
+        .hero-image-card {
+            background: var(--surface-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 36px;
+            padding: 16px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+            transition: transform 0.4s;
+        }
+
+        .hero-image-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            display: block;
+        }
+
+        .floating-pill {
+            position: absolute;
+            background: rgba(15, 23, 42, 0.92);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            backdrop-filter: blur(16px);
+            padding: 14px 22px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-weight: 700;
+            font-size: 14px;
+            z-index: 10;
+        }
+
+        .floating-pill.top-right {
+            top: -20px;
+            right: -20px;
+            color: #34d399;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .floating-pill.bottom-left {
+            bottom: -20px;
+            left: -20px;
+            color: #a5b4fc;
+            animation: float 4s ease-in-out infinite 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Features Section */
+        .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            max-width: 680px;
+            margin: 0 auto 70px;
         }
 
-        .section-title h2 {
-            font-size: 36px;
-            margin-bottom: 10px;
+        .section-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 18px;
+            letter-spacing: -0.02em;
         }
 
-        .feature-grid {
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 18px;
+        }
+
+        .features-section {
+            padding: 120px 0;
+        }
+
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 28px;
         }
 
         .feature-card {
-            background: white;
+            background: var(--surface-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
             padding: 40px;
-            border-radius: 24px;
-            transition: transform 0.3s;
-            border: 1px solid rgba(0,0,0,0.05);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s;
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
+            border-color: var(--glass-border-hover);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
         }
 
-        .feature-icon {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: var(--primary);
+        .feature-icon-box {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(99, 102, 241, 0.15));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
         }
 
         .feature-card h3 {
-            margin-bottom: 15px;
             font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 14px;
         }
 
-        /* Pricing/Boosters */
-        .pricing {
-            padding: 100px 0;
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
         }
 
-        .pricing-grid {
+        /* How Scroll to Earn Works */
+        .how-section {
+            padding: 60px 0 120px;
+        }
+
+        .how-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        .price-card {
+        .how-step-card {
+            background: var(--surface-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
             padding: 40px;
-            border-radius: 24px;
-            border: 2px solid #EEE;
-            text-align: center;
-            transition: border-color 0.3s;
+            position: relative;
         }
 
-        .price-card.featured {
-            border-color: var(--primary);
-            background: rgba(108, 99, 255, 0.02);
-            transform: scale(1.05);
-        }
-
-        .price-card h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .price-card .price {
+        .step-num {
+            font-family: 'Outfit', sans-serif;
             font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 10px;
+            font-weight: 800;
+            color: rgba(99, 102, 241, 0.3);
+            position: absolute;
+            top: 20px;
+            right: 30px;
         }
 
-        .price-card .multiplier {
-            font-size: 20px;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 20px;
+        /* Calculator / Interactive Simulator */
+        .sim-section {
+            padding: 60px 0 120px;
+        }
+
+        .sim-card {
+            background: linear-gradient(135deg, rgba(21, 28, 44, 0.95), rgba(15, 23, 42, 0.95));
+            border: 1px solid var(--glass-border-hover);
+            border-radius: 36px;
+            padding: 60px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .sim-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .sim-input-group {
+            margin-bottom: 30px;
+        }
+
+        .sim-label {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .sim-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #334155;
+            outline: none;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        .sim-result-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(99, 102, 241, 0.15));
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            border-radius: 28px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .sim-result-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            color: #34d399;
+            margin: 10px 0;
+        }
+
+        /* Referral Banner */
+        .referral-banner {
+            padding: 60px 0 120px;
+        }
+
+        .referral-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(99, 102, 241, 0.18));
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            border-radius: 36px;
+            padding: 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .referral-text h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .referral-text p {
+            color: var(--text-muted);
+            font-size: 17px;
+            max-width: 520px;
+        }
+
+        .referral-badge-box {
+            background: linear-gradient(135deg, var(--accent), #059669);
+            color: white;
+            padding: 30px 48px;
+            border-radius: 28px;
+            text-align: center;
+            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .referral-badge-box h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        /* FAQ Accordion */
+        .faq-section {
+            padding: 60px 0 120px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--surface-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .faq-item.active {
+            border-color: var(--glass-border-hover);
+        }
+
+        .faq-question {
+            padding: 24px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 24px 24px;
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
         }
 
         /* Footer */
         footer {
-            padding: 80px 0 40px;
-            background: #2D3436;
-            color: white;
+            border-top: 1px solid var(--glass-border);
+            padding: 70px 0 40px;
+            background: rgba(11, 15, 25, 0.95);
+            color: var(--text-muted);
+            font-size: 14px;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 50px;
             margin-bottom: 50px;
         }
 
         .footer-col h4 {
-            margin-bottom: 25px;
-            font-size: 18px;
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
 
         .footer-col ul {
@@ -258,176 +585,341 @@
         }
 
         .footer-col ul li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
-        .footer-col ul li a {
-            color: #bdc3c7;
+        .footer-col a {
+            color: var(--text-muted);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.2s;
         }
 
-        .footer-col ul li a:hover {
+        .footer-col a:hover {
             color: white;
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #95a5a6;
-            font-size: 14px;
+            padding-top: 36px;
+            border-top: 1px solid var(--glass-border);
         }
 
-        @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                padding: 60px 0;
+        @media (max-width: 900px) {
+            .hero-grid, .sim-grid, .referral-card, .footer-grid {
+                grid-template-columns: 1fr;
                 text-align: center;
             }
-            .hero-content h1 {
-                font-size: 40px;
-            }
-            .hero-content p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            nav {
-                display: none;
-            }
-            .price-card.featured {
-                transform: none;
-            }
+            .hero-title { font-size: 42px; }
+            .hero-subtitle { margin: 0 auto 32px; }
+            .hero-actions { justify-content: center; }
+            nav { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Ambient Glow BG -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <!-- Header / Navbar -->
     <header>
-        <div class="container">
+        <div class="container nav-inner">
             <a href="#" class="logo">
-                <div class="logo-icon">G</div>
-                Geng Rewards
+                <div class="logo-badge">📲</div>
+                GenGrewards
             </a>
             <nav>
+                <a href="#how-it-works">How It Works</a>
                 <a href="#features">Features</a>
-                <a href="#pricing">Boosters</a>
-                <a href="#contact">Contact</a>
+                <a href="#simulator">Earnings Calculator</a>
+                <a href="#referrals">Referrals</a>
+                <a href="privacy_policy.html">Privacy Policy</a>
             </nav>
+            <a href="admin" class="btn-header">Admin Dashboard</a>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero">
-            <div class="hero-content">
-                <h1>Turn Your Free Time Into Real Cash</h1>
-                <p>Watch short, engaging ads and earn direct currency rewards. No points, no complicated math—just simple earnings withdrawn to your UPI.</p>
-                <a href="#pricing" class="cta-button">Start Earning Now</a>
+        <div class="container hero-grid">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <span>🔥</span> The #1 Scroll to Earn Platform
+                </div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Scroll to Earn</span> Real Money Daily
+                </h1>
+                <p class="hero-subtitle">
+                    Why scroll for free? GenGrewards pays you for your screen time, daily phone usage, and inviting friends. Cash out instantly via UPI, Google Play & Amazon Gift Cards.
+                </p>
+                <div class="hero-actions">
+                    <a href="#" class="btn-main">
+                        <span>🚀</span> Start Scrolling & Earning
+                    </a>
+                    <a href="privacy_policy.html" class="btn-glass">
+                        Privacy Policy
+                    </a>
+                </div>
             </div>
-            <div class="hero-image">
-                <!-- Replace with an actual app screenshot or illustration -->
-                <div style="background: var(--primary); height: 500px; width: 280px; border-radius: 40px; display: inline-block; box-shadow: 0 30px 60px rgba(0,0,0,0.2); border: 8px solid #2D3436; position: relative; overflow: hidden;">
-                    <div style="padding: 40px 20px; color: white; text-align: left;">
-                        <h2 style="font-size: 18px;">Balance</h2>
-                        <h1 style="font-size: 32px;">₹124.50</h1>
-                        <div style="margin-top: 50px; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px;">
-                             <p style="font-size: 12px;">New Reward!</p>
-                             <p>+ ₹0.20 Earned</p>
+
+            <!-- Hero Image Wrapper -->
+            <div class="hero-right hero-image-wrapper">
+                <div class="floating-pill top-right">
+                    <span>⚡</span> Instant UPI Payout (₹100)
+                </div>
+                <div class="hero-image-card">
+                    <img src="geng_rewards_hero.jpg" alt="GenGrewards Scroll to Earn App">
+                </div>
+                <div class="floating-pill bottom-left">
+                    <span>🎁</span> Referral Bonus (+500 Pts)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How Scroll to Earn Works -->
+    <section id="how-it-works" class="how-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>How Scroll to Earn Works</h2>
+                <p>Monetize your daily screen time in 3 easy steps.</p>
+            </div>
+
+            <div class="how-grid">
+                <div class="how-step-card">
+                    <div class="step-num">01</div>
+                    <div class="feature-icon-box">📲</div>
+                    <h3>Use Your Phone</h3>
+                    <p>Open GenGrewards and keep doing what you normally do — scroll, browse, and manage daily usage.</p>
+                </div>
+
+                <div class="how-step-card">
+                    <div class="step-num">02</div>
+                    <div class="feature-icon-box">⭐</div>
+                    <h3>Earn Daily Points</h3>
+                    <p>Earn automated reward points for screen-time goals, daily check-in streaks, and inviting friends.</p>
+                </div>
+
+                <div class="how-step-card">
+                    <div class="step-num">03</div>
+                    <div class="feature-icon-box">💸</div>
+                    <h3>Withdraw Real Cash</h3>
+                    <p>Redeem your points directly to PhonePe, Google Pay, Paytm, or instant Google Play & Amazon Gift Cards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Built for Screen Time Monetization</h2>
+                <p>Designed for maximum payout efficiency, direct cashouts, and complete transparency.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-box">📱</div>
+                    <h3>Scroll & Habit Rewards</h3>
+                    <p>Turn your phone screen time into real passive points by staying within healthy daily limits.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-box">👥</div>
+                    <h3>500 Pts Referral System</h3>
+                    <p>Share your unique 6-character referral code with friends. Both of you get 500 bonus points immediately upon signup.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-box">💸</div>
+                    <h3>Direct UPI Cashouts</h3>
+                    <p>Withdraw your balance directly to your PhonePe, Google Pay, or Paytm account with fast processing.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-box">🎁</div>
+                    <h3>Google Play & Amazon Cards</h3>
+                    <p>Prefer gift cards? Redeem your points for Google Play Redeem Codes or Amazon Pay Gift Cards anytime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Earnings Calculator -->
+    <section id="simulator" class="sim-section">
+        <div class="container">
+            <div class="sim-card">
+                <div class="sim-grid">
+                    <div>
+                        <h2 style="font-family: 'Outfit', sans-serif; font-size: 36px; font-weight: 800; margin-bottom: 16px;">
+                            Scroll to Earn Calculator
+                        </h2>
+                        <p style="color: var(--text-muted); margin-bottom: 30px;">
+                            See how much real cash you can earn every month simply by scrolling and sharing your code.
+                        </p>
+
+                        <div class="sim-input-group">
+                            <div class="sim-label">
+                                <span>Daily Active Streak</span>
+                                <span id="days-val">25 Days</span>
+                            </div>
+                            <input type="range" id="days-slider" class="sim-slider" min="1" max="30" value="25">
+                        </div>
+
+                        <div class="sim-input-group">
+                            <div class="sim-label">
+                                <span>Friends Invited Per Month</span>
+                                <span id="ref-val">10 Friends</span>
+                            </div>
+                            <input type="range" id="ref-slider" class="sim-slider" min="0" max="50" value="10">
                         </div>
                     </div>
-                    <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 60px; background: rgba(255,255,255,0.9); display: flex; justify-content: space-around; align-items: center; columns: #6C63FF; font-size: 20px;">
-                        <span>🏠</span><span>🏦</span><span>👤</span>
+
+                    <div class="sim-result-box">
+                        <div style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">
+                            Estimated Monthly Earnings
+                        </div>
+                        <div class="sim-result-val" id="total-val">₹425.00</div>
+                        <div style="color: #a5b4fc; font-weight: 600; font-size: 15px;" id="pts-val">
+                            12,500 Total Points
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="features" class="features">
+    <!-- Referral Banner -->
+    <section id="referrals" class="referral-banner">
         <div class="container">
-            <div class="section-title">
-                <h2>Why Choose Geng Rewards?</h2>
-                <p>The most transparent reward app on the market.</p>
-            </div>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">💸</div>
-                    <h3>Direct Cash</h3>
-                    <p>No more converting points. Every ad you watch adds real money (₹) directly to your available balance.</p>
+            <div class="referral-card">
+                <div class="referral-text">
+                    <h2>500 Points Per Referral</h2>
+                    <p>Invite friends to Scroll to Earn with GenGrewards. As soon as they enter your code, both of you instantly get 500 bonus points credited to your account!</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Instant Multipliers</h3>
-                    <p>Unlock premium booster plans to increase your earnings per ad by up to 2x instantly.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏦</div>
-                    <h3>UPI Withdrawals</h3>
-                    <p>Ready to spend? Withdraw your earnings directly to PhonePe, Google Pay, or Paytm within 24 hours.</p>
+                <div class="referral-badge-box">
+                    <h3>+500 Pts</h3>
+                    <span style="font-weight: 700; opacity: 0.9;">Dual Referral Bonus</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="pricing" class="pricing">
+    <!-- FAQ Accordion -->
+    <section id="faq" class="faq-section">
         <div class="container">
-            <div class="section-title">
-                <h2>Earning Boosters</h2>
-                <p>Maximize your daily income with a premium plan.</p>
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about Scroll to Earn on GenGrewards.</p>
             </div>
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <h3>Basic Booster</h3>
-                    <div class="price">₹299</div>
-                    <div class="multiplier">1.5x Multiplier</div>
-                    <p>Earn 50% more on every single ad reward for 30 days.</p>
+
+            <div class="faq-container">
+                <div class="faq-item active">
+                    <div class="faq-question">What does "Scroll to Earn" mean? <span>+</span></div>
+                    <div class="faq-answer">
+                        Scroll to Earn means monetizing your daily phone usage. Instead of wasting time scrolling for free, GenGrewards rewards you with daily points for maintaining healthy usage habits, completing daily goals, and inviting friends.
+                    </div>
                 </div>
-                <div class="price-card featured">
-                    <h3>Silver Booster</h3>
-                    <div class="price">₹499</div>
-                    <div class="multiplier">1.75x Multiplier</div>
-                    <p>Our most popular plan. Nearly double your earnings with every watch.</p>
+
+                <div class="faq-item">
+                    <div class="faq-question">How does the 500 Pts Referral System work? <span>+</span></div>
+                    <div class="faq-answer">
+                        When a friend enters your unique 6-character referral code during sign up or in their Referral tab, 500 bonus points are automatically credited to both your account and your friend's account instantly.
+                    </div>
                 </div>
-                <div class="price-card">
-                    <h3>Gold Booster</h3>
-                    <div class="price">₹799</div>
-                    <div class="multiplier">2.0x Multiplier</div>
-                    <p>The ultimate earning power. Get double the reward value on every ad.</p>
+
+                <div class="faq-item">
+                    <div class="faq-question">How can I withdraw my cash earnings? <span>+</span></div>
+                    <div class="faq-answer">
+                        Go to the Rewards section in the app. Select your preferred payout method (UPI Direct Transfer to PhonePe, Google Pay, or Paytm, or Google Play & Amazon Gift Cards), enter your details, and submit.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Is my phone data safe and private? <span>+</span></div>
+                    <div class="faq-answer">
+                        Yes! GenGrewards strictly processes total daily screen time in milliseconds. We never track individual app usage, browsing history, or personal data.
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
+    <!-- Footer -->
+    <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="#" class="logo" style="color: white; margin-bottom: 20px;">
-                        <div class="logo-icon">G</div>
-                        Geng Rewards
+                <div>
+                    <a href="#" class="logo" style="margin-bottom: 20px; display: inline-flex;">
+                        <div class="logo-badge">📲</div>
+                        GenGrewards
                     </a>
-                    <p>Empowering users to monetize their attention with direct, fair rewards.</p>
+                    <p style="max-width: 420px; color: var(--text-muted);">
+                        The premier Scroll to Earn app — turning daily phone usage, screen-time wellness, and friend referrals into real cash & gift card payouts.
+                    </p>
                 </div>
+
                 <div class="footer-col">
-                    <h4>Legals</h4>
+                    <h4>Legal & System</h4>
                     <ul>
                         <li><a href="privacy_policy.html">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="admin">Admin Panel</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-col">
-                    <h4>Support</h4>
+                    <h4>Support Contact</h4>
                     <ul>
-                        <li><a href="mailto:support@gengrewards.com">support@gengrewards.com</a></li>
-                        <li><a href="#">Help Center</a></li>
+                        <li><a href="mailto:luckykaseqq@gmail.com">luckykaseqq@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                &copy; 2026 Geng Rewards. All rights reserved.
+                &copy; 2026 GenGrewards. All rights reserved.
             </div>
         </div>
     </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Interactive Calculator
+        const daysSlider = document.getElementById('days-slider');
+        const refSlider = document.getElementById('ref-slider');
+        const daysVal = document.getElementById('days-val');
+        const refVal = document.getElementById('ref-val');
+        const totalVal = document.getElementById('total-val');
+        const ptsVal = document.getElementById('pts-val');
+
+        function updateCalc() {
+            const days = parseInt(daysSlider.value);
+            const refs = parseInt(refSlider.value);
+            
+            daysVal.textContent = days + ' Days';
+            refVal.textContent = refs + ' Friends';
+
+            const dailyPoints = days * 300;
+            const refPoints = refs * 500;
+            const totalPts = dailyPoints + refPoints;
+            const rupeeVal = (totalPts / 30).toFixed(2);
+
+            ptsVal.textContent = totalPts.toLocaleString() + ' Total Points';
+            totalVal.textContent = '₹' + rupeeVal;
+        }
+
+        daysSlider.addEventListener('input', updateCalc);
+        refSlider.addEventListener('input', updateCalc);
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
 
 </body>
 </html>
