@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Reel n Earn</string>
+    
+    <!-- AdMob App ID -->
+    <string name="admob_app_id">ca-app-pub-1444583349758700~9409403926</string>
+    
+    <!-- Ad Unit IDs (Production) -->
+    <string name="ad_unit_rewarded">ca-app-pub-1444583349758700/8968394102</string>
+    <string name="ad_unit_app_open">ca-app-pub-1444583349758700/6533802459</string>
+    <string name="ad_unit_banner">ca-app-pub-1444583349758700/5429349209</string>
+    <string name="ad_unit_rewarded_interstitial">ca-app-pub-1444583349758700/1089904088</string>
+    <string name="ad_unit_native">ca-app-pub-1444583349758700/2299043977</string>
+    
+    <!-- Test Ad Unit IDs (Google Sample IDs) -->
+    <string name="test_ad_unit_rewarded">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="test_ad_unit_app_open">ca-app-pub-3940256099942544/9257395921</string>
+    <string name="test_ad_unit_banner">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="test_ad_unit_native">ca-app-pub-3940256099942544/2247696110</string>
+</resources>

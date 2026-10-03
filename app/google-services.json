@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "848825463828",
+    "project_id": "geng-money",
+    "storage_bucket": "geng-money.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848825463828:android:e11d2b413c8daa692f6301",
+        "android_client_info": {
+          "package_name": "com.example.geng_money"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy0nEMUD1t5XDSFT3DAjepqwvyNbJMCqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848825463828:android:205e157681342e092f6301",
+        "android_client_info": {
+          "package_name": "com.quizedguy.gengrewards"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy0nEMUD1t5XDSFT3DAjepqwvyNbJMCqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848825463828:android:205e157681342e092f6301",
+        "android_client_info": {
+          "package_name": "com.quizedguy.reelnearn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy0nEMUD1t5XDSFT3DAjepqwvyNbJMCqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
