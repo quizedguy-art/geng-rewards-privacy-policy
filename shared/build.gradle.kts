@@ -57,6 +57,8 @@ kotlin {
             implementation(libs.play.services.ads)
             implementation(libs.play.age.signals)
             implementation(libs.user.messaging.platform)
+            implementation(libs.play.app.update)
+            implementation(libs.play.app.update.ktx)
             implementation(project.dependencies.platform(libs.firebase.bom))
             implementation(libs.firebase.firestore)
             implementation(libs.firebase.auth)

@@ -14,6 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 class MainActivity : ComponentActivity() {
     private var consentManager: ConsentManager? = null
+    private var inAppUpdateHelper: com.quizedguy.reelnearn.shared.util.InAppUpdateHelper? = null
     private var isMobileAdsInitializeCalled = AtomicBoolean(false)
 
     private val navigationTarget = androidx.compose.runtime.mutableStateOf<String?>(null)
@@ -23,6 +24,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         navigationTarget.value = intent?.getStringExtra(com.quizedguy.reelnearn.shared.util.NotificationHelper.EXTRA_NAVIGATE_TO)
+
+        // Automatically check Google Play for in-app updates (only prompts if older version is installed)
+        inAppUpdateHelper = com.quizedguy.reelnearn.shared.util.InAppUpdateHelper(this)
+        inAppUpdateHelper?.checkForAppUpdate()
 
         consentManager = ConsentManager(this)
         consentManager?.gatherConsent { error ->
@@ -45,6 +50,16 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        inAppUpdateHelper?.onResume()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        inAppUpdateHelper?.onDestroy()
     }
 
     override fun onNewIntent(intent: android.content.Intent) {
